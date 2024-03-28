@@ -25,3 +25,11 @@ def test_produtos_type():
 def test_len_produtos_type():
     response = client.get("/produtos")
     assert len(response.json()) == 3
+
+def test_pega_um_produto():
+    response = client.get("/produtos/1")
+    assert response.json() == dict(id=1,
+        nome="Smartphone",
+        descricao="Um telefone que é inteligente",
+        preco=1500.0,
+        disponivel=True)
